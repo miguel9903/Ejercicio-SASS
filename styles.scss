@@ -1,0 +1,80 @@
+@use 'nav';
+@use 'variables'; 
+
+body {
+    margin: 0;
+    color: variables.$color-letra;
+    background-color: variables.$color-fondo;
+    font-family: variables.$fuente-principal;
+}
+
+main {
+    padding: 5px 10px; 
+}
+
+
+/* Mixins */
+
+@mixin crearCirculo($width: 120px, $background: dodgerblue) {
+    width: $width;
+    height: $width;
+    border-radius: 100%;
+    background: $background;
+}
+
+.box1 {
+    @include crearCirculo();
+}
+
+.box2 {
+    @include crearCirculo(150px, lightcoral);
+}
+
+.box3 {
+    @include crearCirculo(180px, crimson);
+}
+
+
+/* Herencia */
+
+%alerta-base {
+    width: 60%;
+    border: 2px solid white;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+    padding: 10px;
+    margin: 10px auto;
+}
+
+.alert {
+    @extend %alerta-base;
+    background-color: #85C1E9;
+}
+
+.alert-danger {
+    @extend %alerta-base;
+    background-color: red;
+}
+
+.alert-success {
+    @extend %alerta-base;
+    background-color: green;
+}
+
+
+/* Operadores */
+
+h1 {
+    font-size: 20px + 5px - 1px;
+}
+
+.box {
+    color: white;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: yellowgreen;
+    width: 600px / 960px * 100%;
+    font-size: 12px + 5px - 1px;
+}
+
